@@ -1,4 +1,3 @@
-import os
 import torch
 import pandas as pd
 import numpy as np
@@ -14,7 +13,7 @@ class ElectricProductionDataset(Dataset):
 
 		self.df = pd.read_csv(file_path)
 
-		# Claculate ∆t (deltas)
+		# Compute ∆t (deltas)
 		self.dt = np.array([ (self.df.Value[i + 1] - self.df.Value[i]) 
 			for i in range(self.df.Value.size - 1)])
 		self.dt = np.concatenate([np.array([0]), self.dt])
